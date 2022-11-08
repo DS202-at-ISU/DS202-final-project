@@ -1,6 +1,6 @@
 ---
-output: 
-  - bookdown::html_document2
+title: "DS 202 Final Project"
+output: github_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit the README.Rmd file -->
@@ -11,8 +11,6 @@ knitr::opts_chunk$set(echo = FALSE, warning = TRUE)
 library(ggplot2)
 library(dplyr)
 ```
-
-# Final Project - Team XXX {.unnumbered}
 
 This repository serves as a starter repo for your final project, and this Rmd is supposed to serve as a starter file for your project report.
 
