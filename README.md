@@ -1,103 +1,96 @@
 
 <!-- README.md is generated from README.Rmd. Please edit the README.Rmd file -->
 
-# Lab report \#3 - instructions
+# Final Project - Team XXX
 
-Follow the instructions posted at
-<https://ds202-at-isu.github.io/labs.html> for the lab assignment. The
-work is meant to be finished during the lab time, but you have time
-until Monday evening to polish things.
+This repository serves as a starter repo for your final project, and
+this Rmd is supposed to serve as a starter file for your project report.
 
-Include your answers in this document (Rmd file). Make sure that it
-knits properly (into the md file). Upload both the Rmd and the md file
-to your repository.
+## Repo Structure
 
-All submissions to the github repo will be automatically uploaded for
-grading once the due date is passed. Submit a link to your repository on
-Canvas (only one submission per team) to signal to the instructors that
-you are done with your submission.
+The structure sketched out below is an idea of what your repository
+might look like. You can use it as a starting base and change according
+to your needs. But think about the changes that you make!
 
-# Lab 3: Avenger’s Peril
+    -- code
+    |   |   -- any R scripts you need but don't want to include directly in the write-up
+    -- data
+    |   |   -- csv files (cleaned data)
+    -- data-raw
+    |   |   -- raw data files 
+    |   |   -- data description files, origin
+    |   |   -- Codebook
+    -- final-project.Rmd
+    -- images  # only images that are not created by the Rmd
+    -- LICENSE
+    -- README.md
+    -- README.Rmd
+    -- README_files # folder with files created during the knitting process
 
-## As a team
+# Project report
 
-Extract from the data below two data sets in long form `deaths` and
-`returns`
+## Title of your project
 
-``` r
-av <- read.csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/avengers/avengers.csv", stringsAsFactors = FALSE)
-head(av)
-```
+Authors: First Name Last Name, First Name Last Name, …
 
-    ##                                                       URL
-    ## 1           http://marvel.wikia.com/Henry_Pym_(Earth-616)
-    ## 2      http://marvel.wikia.com/Janet_van_Dyne_(Earth-616)
-    ## 3       http://marvel.wikia.com/Anthony_Stark_(Earth-616)
-    ## 4 http://marvel.wikia.com/Robert_Bruce_Banner_(Earth-616)
-    ## 5        http://marvel.wikia.com/Thor_Odinson_(Earth-616)
-    ## 6       http://marvel.wikia.com/Richard_Jones_(Earth-616)
-    ##                    Name.Alias Appearances Current. Gender Probationary.Introl
-    ## 1   Henry Jonathan "Hank" Pym        1269      YES   MALE                    
-    ## 2              Janet van Dyne        1165      YES FEMALE                    
-    ## 3 Anthony Edward "Tony" Stark        3068      YES   MALE                    
-    ## 4         Robert Bruce Banner        2089      YES   MALE                    
-    ## 5                Thor Odinson        2402      YES   MALE                    
-    ## 6      Richard Milhouse Jones         612      YES   MALE                    
-    ##   Full.Reserve.Avengers.Intro Year Years.since.joining Honorary Death1 Return1
-    ## 1                      Sep-63 1963                  52     Full    YES      NO
-    ## 2                      Sep-63 1963                  52     Full    YES     YES
-    ## 3                      Sep-63 1963                  52     Full    YES     YES
-    ## 4                      Sep-63 1963                  52     Full    YES     YES
-    ## 5                      Sep-63 1963                  52     Full    YES     YES
-    ## 6                      Sep-63 1963                  52 Honorary     NO        
-    ##   Death2 Return2 Death3 Return3 Death4 Return4 Death5 Return5
-    ## 1                                                            
-    ## 2                                                            
-    ## 3                                                            
-    ## 4                                                            
-    ## 5    YES      NO                                             
-    ## 6                                                            
-    ##                                                                                                                                                                              Notes
-    ## 1                                                                                                                Merged with Ultron in Rage of Ultron Vol. 1. A funeral was held. 
-    ## 2                                                                                                  Dies in Secret Invasion V1:I8. Actually was sent tto Microverse later recovered
-    ## 3 Death: "Later while under the influence of Immortus Stark committed a number of horrible acts and was killed.'  This set up young Tony. Franklin Richards later brought him back
-    ## 4                                                                               Dies in Ghosts of the Future arc. However "he had actually used a hidden Pantheon base to survive"
-    ## 5                                                      Dies in Fear Itself brought back because that's kind of the whole point. Second death in Time Runs Out has not yet returned
-    ## 6                                                                                                                                                                             <NA>
+### Abstract (TL;DR)
 
-Get the data into a format where the five columns for Death\[1-5\] are
-replaced by two columns: Time, and Death. Time should be a number
-between 1 and 5 (look into the function `parse_number`); Death is a
-categorical variables with values “yes”, “no” and ““. Call the resulting
-data set `deaths`.
+An abstract is a quick summary of your work. Ideally it should motivate
+someone to read the rest of the paper. Include one sentence each on
 
-Similarly, deal with the returns of characters.
+-   what is the project about?
+-   what is the motivation for doing it?
+-   what data is your work based on? and where does it come from? = what
+    are your main findings? (one sentence each)
 
-Based on these datasets calculate the average number of deaths an
-Avenger suffers.
+### Intro/Background/Motivation
 
-## Individually
+What is the topic of your project, why is it relevant?
 
-For each team member, copy this part of the report.
+At the end of the Intro, write a sentence describing what each of the
+(result) sections is about, e.g. in section 3 we show the relationship
+between XXX and YYY, section 4 also considers the effect of variable
+ZZZ. …
 
-Each team member picks one of the statements in the FiveThirtyEight
-[analysis](https://fivethirtyeight.com/features/avengers-death-comics-age-of-ultron/)
-and fact checks it based on the data. Use dplyr functionality whenever
-possible.
+Somewhere at the beginning of your project, include a code chunk that
+includes all of the R packages you are using throughout. In this
+document, the setup code chunk is called `setup` (see line 8) Also make
+sure to set defaults for the code chunks - like should they be visible?
+(probably not: echo=FALSE). Do you want to automatically include
+warnings? (probably yes, for creating the Rmd, to make sure that all
+warnings are accounted for)
 
-### FiveThirtyEight Statement
+### Quick Data Summary
 
-> Quote the statement you are planning to fact-check.
+What are the variables that you will be using in the main part of the
+report? What are their ranges? You could include a table with variable
+names, a short explanation, and (very broad) summary statistics.
 
-### Include the code
+### Results
 
-Make sure to include the code to derive the (numeric) fact for the
-statement
+Each line of exploration is supposed to be featured in one of the
+Results sections. Make sure to change to more interesting section
+headers!
 
-### Include your answer
+#### Results 1
 
-Include at least one sentence discussing the result of your
-fact-checking endeavor.
+In your write-up, make sure to refer to the figure. You can include a
+hyperlink to @code-chunk-name using the name of the code chunk (make
+sure, to give each code chunk a different name) by placing an `@` in
+front of its name.
 
-Upload your changes to the repository. Discuss and refine answers as a
-team.
+![This is the figure caption. Make sure to use the description we
+practised in the homework: first sentence describes structure of the
+plot, second sentence describes main finding, third sentence describes
+outliers/follow-up.](README_files/figure-gfm/code-chunk-name-1.png)
+
+#### Results 2
+
+#### Results 3
+
+…
+
+### Data source
+
+Where does the data come from, who owns the data? Where are all the
+scripts that you need to clean the data?
