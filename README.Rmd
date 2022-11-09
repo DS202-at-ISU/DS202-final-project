@@ -1,16 +1,36 @@
 ---
 title: "DS 202 Final Project"
-output: github_document
+output: 
+  github_document:
+    number_section: TRUE
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit the README.Rmd file -->
 
 ```{r setup, include=FALSE}
+library(knitr)
 knitr::opts_chunk$set(echo = FALSE, warning = TRUE)
+
+
+knit_hooks$set( fig.cap = function(before, options, envir) {
+  if ( !before ) {
+    chr <- sprintf("<p><small><strong><a name='fig:%s' value = %d>Figure %d</a></strong>: %s</small></p>", options$label, options$fig.num, options$fig.num, options$fig.cap)
+    
+    return(chr)
+  }
+})
+
+
+chunkref <- local({
+  function(chunklabel) {
+    sprintf('[@ref(%s)](#%s)', chunklabel, chunklabel )
+  }  
+})
 
 library(ggplot2)
 library(dplyr)
 ```
+
 
 This repository serves as a starter repo for your final project, and this Rmd is supposed to serve as a starter file for your project report.
 
@@ -68,7 +88,8 @@ Each line of exploration is supposed to be featured in one of the Results sectio
 
 ## Results 1
 
-In your write-up, make sure to refer to the figure. You can include a hyperlink to Figure \@ref(fig:code-chunk-name) using the name of the code chunk (make sure, to give each code chunk a different name) by using `\@ref(fig:code-chunk-name)` in your write-up.
+In your write-up, make sure to refer to the figure. You can include a hyperlink to Figure `r chunkref("fig:code-chunk-name")`
+[Figure 1](#fig:code-chunk-name) using the name of the code chunk (make sure, to give each code chunk a different name) by using `\@ref(fig:code-chunk-name)` in your write-up. \@ref(fig:code-chunk-name)
 
 ```{r code-chunk-name, echo=FALSE, fig.cap="This is the figure caption. Make sure to use the description we practised in the homework: first sentence describes structure of the plot, second sentence describes main finding, third sentence describes outliers/follow-up.", message = FALSE}
 
