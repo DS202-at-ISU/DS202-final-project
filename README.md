@@ -43,16 +43,16 @@ someone to read the rest of the paper. Include one sentence each on
 -   what data is your work based on? and where does it come from? = what
     are your main findings? (one sentence each)
 
-# 1 Intro/Background/Motivation
+# Intro/Background/Motivation
 
 What is the topic of your project, why is it relevant?
 
 At the end of the Intro, write a sentence describing what each of the
-(result) sections is about, e.g. in section [Results 1](#31-results-1)
-we show the relationship between XXX and YYY, section [Results
-2](#32-results-2) also considers the effect of variable ZZZ. … Finally
-we conclude with a quick summary of our findings and potential follow-up
-work in section [Conclusions](#4-conclusions).
+(result) sections is about, e.g. in section [Results 1](#results-1) we
+show the relationship between XXX and YYY, section [Results
+2](#results-2) also considers the effect of variable ZZZ. … Finally we
+conclude with a quick summary of our findings and potential follow-up
+work in section [Conclusions](#conclusions).
 
 Somewhere at the beginning of your project, include a code chunk that
 includes all of the R packages you are using throughout. In this
@@ -62,53 +62,68 @@ sure to set defaults for the code chunks - like should they be visible?
 warnings? (probably yes, for creating the Rmd, to make sure that all
 warnings are accounted for)
 
-# 2 Quick Data Summary
+# Quick Data Summary
 
 What are the variables that you will be using in the main part of the
 report? What are their ranges? You could include a table with variable
 names, a short explanation, and (very broad) summary statistics.
 
-# 3 Results
+# Results
 
 Each line of exploration is supposed to be featured in one of the
 Results sections. Make sure to change to more interesting section
 headers!
 
-## 3.1 Results 1
+## Results 1
 
-In your write-up, make sure to refer to the figure. You can include a
-hyperlink to Figure [@ref(fig:code-chunk-name)](#fig:code-chunk-name)
-[Figure 1](#fig:code-chunk-name) using the name of the code chunk (make
-sure, to give each code chunk a different name) by using
-`\@ref(fig:code-chunk-name)` in your write-up. @ref(fig:code-chunk-name)
+In your write-up, make sure to refer to all of the figures you create.
+You can include a hyperlink to the [scatterplot](#fig:scatterplot) by
+using the name of the code chunk (make sure, to give each code chunk a
+different name). In your markdown document you can create this link
+either by calling the function `chunkref` with the name of the code
+chunk in quotes, i.e. `r chunkref("scatterplot")` or by using the
+markdown expression `[scatterplot](#fig:scatterplot)`. Similarly, we can
+refer to the [2nd scatterplot](#fig:2nd%20scatterplot). Note that the
+figure captions appear above the figures - this saves us from having to
+scroll up after following the link.
+
+<p>
+<small><strong><a name='fig:scatterplot'>scatterplot</a></strong>: This
+is the figure caption. Make sure to use the description we practised in
+the homework: first sentence describes structure of the plot, second
+sentence describes main finding, third sentence describes
+outliers/follow-up.</small>
+</p>
 
 ![This is the figure caption. Make sure to use the description we
 practised in the homework: first sentence describes structure of the
 plot, second sentence describes main finding, third sentence describes
-outliers/follow-up.](README_files/figure-gfm/code-chunk-name-1.png)
+outliers/follow-up.](README_files/figure-gfm/scatterplot-1.png)
 
 <p>
-
-<small><strong><a name='fig:code-chunk-name' value = 1>Figure
-1</a></strong>: This is the figure caption. Make sure to use the
-description we practised in the homework: first sentence describes
+<small><strong><a name='fig:2nd scatterplot'>2nd
+scatterplot</a></strong>: This is the figure caption. Make sure to use
+the description we practised in the homework: first sentence describes
 structure of the plot, second sentence describes main finding, third
 sentence describes outliers/follow-up.</small>
-
 </p>
+
+![This is the figure caption. Make sure to use the description we
+practised in the homework: first sentence describes structure of the
+plot, second sentence describes main finding, third sentence describes
+outliers/follow-up.](README_files/figure-gfm/2nd%20scatterplot-1.png)
 
 Additionally, you can also refer to different sections in your writeup
 by using anchors (links) to section headers. Here, we are referring to
-subsection [Results 3](#33-results-3). The code for that is
-`[Results 3]`.
+subsection [Results 3](#results-3). The code for that is `[Results 3]`.
 
-## 3.2 Results 2
+## Results 2
 
-## 3.3 Results 3
+## Results 3
 
 …
 
-# 4 Conclusions
+# Conclusions
 
 Give a quick summary of your work. Here is the place to be a bit
 critical and discuss potential limitations. Add a sentence on what else

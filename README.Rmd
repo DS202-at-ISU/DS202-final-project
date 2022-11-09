@@ -2,7 +2,7 @@
 title: "DS 202 Final Project"
 output: 
   github_document:
-    number_section: TRUE
+    number_section: FALSE
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit the README.Rmd file -->
@@ -13,8 +13,9 @@ knitr::opts_chunk$set(echo = FALSE, warning = TRUE)
 
 
 knit_hooks$set( fig.cap = function(before, options, envir) {
-  if ( !before ) {
+  if ( before ) {
     chr <- sprintf("<p><small><strong><a name='fig:%s' value = %d>Figure %d</a></strong>: %s</small></p>", options$label, options$fig.num, options$fig.num, options$fig.cap)
+    chr <- sprintf("<p><small><strong><a name='fig:%s'>%s</a></strong>: %s</small></p>", options$label, options$label,  options$fig.cap)
     
     return(chr)
   }
@@ -23,7 +24,7 @@ knit_hooks$set( fig.cap = function(before, options, envir) {
 
 chunkref <- local({
   function(chunklabel) {
-    sprintf('[@ref(%s)](#%s)', chunklabel, chunklabel )
+    sprintf('[%s](#%s)', chunklabel, paste0("fig:",chunklabel) )
   }  
 })
 
@@ -88,10 +89,16 @@ Each line of exploration is supposed to be featured in one of the Results sectio
 
 ## Results 1
 
-In your write-up, make sure to refer to the figure. You can include a hyperlink to Figure `r chunkref("fig:code-chunk-name")`
-[Figure 1](#fig:code-chunk-name) using the name of the code chunk (make sure, to give each code chunk a different name) by using `\@ref(fig:code-chunk-name)` in your write-up. \@ref(fig:code-chunk-name)
+In your write-up, make sure to refer to all of the figures you create. You can include a hyperlink to the [scatterplot](#fig:scatterplot) by using the name of the code chunk (make sure, to give each code chunk a different name). In your markdown document you can create this link either by calling the function `chunkref` with the name of the code chunk in quotes, i.e. `` r chunkref("scatterplot") `` or by using the markdown expression `[scatterplot](#fig:scatterplot)`. Similarly, we can refer to the `r chunkref("2nd scatterplot")`. Note that the figure captions appear above the figures - this saves us from having to scroll up after following the link.
 
-```{r code-chunk-name, echo=FALSE, fig.cap="This is the figure caption. Make sure to use the description we practised in the homework: first sentence describes structure of the plot, second sentence describes main finding, third sentence describes outliers/follow-up.", message = FALSE}
+```{r scatterplot, echo=FALSE, fig.cap="This is the figure caption. Make sure to use the description we practised in the homework: first sentence describes structure of the plot, second sentence describes main finding, third sentence describes outliers/follow-up.", message = FALSE}
+
+mtcars %>% 
+  ggplot(aes(x = wt, y = mpg)) + 
+  geom_point()
+```
+
+```{r 2nd scatterplot, echo=FALSE, fig.cap="This is the figure caption. Make sure to use the description we practised in the homework: first sentence describes structure of the plot, second sentence describes main finding, third sentence describes outliers/follow-up.", message = FALSE}
 
 mtcars %>% 
   ggplot(aes(x = wt, y = mpg)) + 
